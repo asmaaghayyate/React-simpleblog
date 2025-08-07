@@ -9,12 +9,35 @@ function ArticleDetail({ articles }) {
   }
 
   return (
-    <div className="container mt-5 ">
-      {article.image && <img src={article.image} alt={article.title} className="img-fluid mb-3 " />}
-      <h2>{article.title}</h2>
-      <p>{article.content}</p>
-      <Link to="/" className="btn btn-secondary">Retour</Link>
+   <div className="container mt-5 mb-5">
+  <div className="card shadow">
+    {article.image && (
+      <img
+        src={article.image}
+        alt={article.title}
+        className="card-img-top"
+      />
+    )}
+    <div className="card-body">
+      <h5 className="card-title">{article.title}</h5>
+      <p className="card-text">{article.content}</p>
+
+      {/* Affichage de la date (si elle existe) */}
+      {article.date && (
+        <p className="text-muted">
+          Publié le : {new Date(article.date).toLocaleDateString("fr-FR")}
+        </p>
+      )}
+
+      <Link to="/" className="btn btn-secondary mt-2">
+        Retour
+      </Link>
     </div>
+  </div>
+</div>
+
+
+
   );
 }
 

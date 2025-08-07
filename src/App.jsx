@@ -6,6 +6,8 @@ import NewArticleForm from "./components/NewArticleForm";
 import Home from "./components/Home";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import Apropos from "./components/Apropos.jsx"; // ou le chemin correct
+
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
@@ -63,11 +65,14 @@ function App() {
     <Router> 
    
        <Navbar />
+       <main className="container my-4">
         <Routes>
           <Route path="/" element={<Home articles={articles} />} />
           <Route path="/article/:id" element={<ArticleDetail articles={articles} />} />
+          <Route path="/about" element={<Apropos />} />
           <Route path="/new" element={<NewArticleForm onAddArticle={handleAddArticle} />} />
         </Routes>
+        </main>
       <Footer></Footer>
     </Router>
   );

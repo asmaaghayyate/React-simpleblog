@@ -1,0 +1,91 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+  
+ body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: #242424;
+  color: rgba(255, 255, 255, 0.87);
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+.navbar {
+  background-color: #9bb484 !important;
+  height: 80px;
+}
+
+.navbar .nav-link,
+.navbar .navbar-brand {
+
+  color:white !important;
+}
+
+
+.navbar .nav-link:hover {
+  color: rgb(46, 108, 53) !important;
+}
+
+  .hero-image {
+      width: 100%;
+            height: 60vh;
+    }
+  
+
+
+.hero-text-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+  width: 100%;
+  padding: 0 20px;
+  font-size: 1.8rem;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+
+footer {
+      background: #000;
+      color: white;
+      padding: 40px 0;
+    }
+
+
+.btn-voir-plus {
+  background-color: transparent;
+  border: 1px solid #9BB484;
+  color: #9BB484;
+  padding: 0.4rem 0.8rem;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-voir-plus:hover {
+  background-color: #9BB484;
+  color: white;
+}
+
+
+.btn-publier {
+  background-color: #a8c79b; /* vert clair */
+  border: 1px solid #a8c79b;
+  color: #2f3e2c; /* texte foncé */
+  padding: 0.5rem 1.2rem;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-publier:hover {
+  background-color: #9BB484; /* vert un peu plus foncé au hover */
+  color: white;
+  border-color: #9BB484;
+}
+

@@ -10,10 +10,10 @@ export default function Home({ articles }) {
   return (
     <>
     
-<div className=" position-relative mt-5">
+<main  className="container-fluid p-0  mt-5">
   <img src="images/bloghome2.jpeg" alt="Espace de travail" className="hero-image" />
  
-</div>
+</main>
 
 <div className="mt-4">
         <ArticleList articles={articles} />

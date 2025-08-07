@@ -26,21 +26,31 @@ function App() {
         const apiArticles = data.articles.map((art, index) => ({
           id: index + 1,
           title: art.title,
-          image: art.urlToImage || "https://picsum.photos/seed/400/200",
-          content: art.description || art.content || ""
-        }));
+          imagefile: art.urlToImage || "https://picsum.photos/seed/400/200",
+          content: art.description || art.content || "",
+          date: art.publishedAt
+        ? new Date(art.publishedAt).toLocaleDateString('fr-FR', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          })
+        : "Date inconnue"
+    }));
+     
         setArticles([...apiArticles, ...localArticles]);
         setLoading(false);
       })
       .catch(() => setLoading(false));
   }, []);
 
-  const handleAddArticle = (title, content) => {
+  const handleAddArticle = (title, content,imageFile) => {
+   let imageUrl = "";
+    imageUrl = URL.createObjectURL(imageFile);
     const newArticle = {
       id: Date.now(),
       title,
       content,
-      image: `https://picsum.photos/seed/${Date.now()}/400/200`
+      image:imageUrl
     };
 
     const updatedArticles = [...articles, newArticle];
@@ -65,14 +75,25 @@ function App() {
     <Router> 
    
        <Navbar />
-       <main className="container my-4">
         <Routes>
           <Route path="/" element={<Home articles={articles} />} />
-          <Route path="/article/:id" element={<ArticleDetail articles={articles} />} />
-          <Route path="/about" element={<Apropos />} />
-          <Route path="/new" element={<NewArticleForm onAddArticle={handleAddArticle} />} />
-        </Routes>
+
+           <Route path="/article/:id" element={
+        <main className="container my-4">
+          <ArticleDetail articles={articles} />
         </main>
+      } />
+      <Route path="/about" element={
+        <main className="container my-4">
+          <Apropos />
+        </main>
+      } />
+      <Route path="/new" element={
+        <main className="container my-4">
+          <NewArticleForm onAddArticle={handleAddArticle} />
+        </main>
+      } />
+        </Routes>
       <Footer></Footer>
     </Router>
   );

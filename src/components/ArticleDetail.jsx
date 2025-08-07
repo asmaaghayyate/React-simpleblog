@@ -25,7 +25,7 @@ function ArticleDetail({ articles }) {
       {/* Affichage de la date (si elle existe) */}
       {article.date && (
         <p className="text-muted">
-          Publié le : {new Date(article.date).toLocaleDateString("fr-FR")}
+          Publié le : {article.date}
         </p>
       )}
 

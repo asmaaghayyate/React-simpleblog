@@ -22,9 +22,7 @@ export default function ArticleList({ articles }) {
                 />
               )}
               <div className="card-body d-flex flex-column">
-                <small className="text-muted mb-2">
-    {a.date}
-  </small>
+             <small className="text-muted mb-2">{a.date}</small>
     <h5 className="card-title fs-8">  {a.title.split(" ").slice(0, 6).join(" ") + (a.title.split(" ").length > 6 ? "..." : "")}
 </h5>
                 <p className="card-text text-truncate ">{a.content}</p>

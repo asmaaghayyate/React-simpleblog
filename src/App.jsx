@@ -94,7 +94,7 @@ function App() {
 
   return (
    
-     <Router basename="/React-simpleblog">
+     <Router >
    
        <Navbar />
         <Routes>

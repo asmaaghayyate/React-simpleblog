@@ -5,7 +5,7 @@ export default function ArticleList({ articles }) {
 
 
 <div className="container ">
-    <h2 className="m-5 text-center" id="tarif">Nos Articles</h2>
+    <h2 className="m-4 text-center" id="tarif">Nos Articles</h2>
 
     
       {/* Liste des articles centrée */}

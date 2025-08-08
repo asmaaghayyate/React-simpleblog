@@ -5,13 +5,20 @@ function NewArticleForm({ onAddArticle }) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
    const [imageFile, setImageFile] = useState(null);  
+     const [successMessage, setSuccessMessage] = useState("");
+
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!title || !content || !imageFile) return alert("Champs obligatoires !");
+   
+
     onAddArticle(title, content,imageFile);
+        setSuccessMessage("Article ajouté avec succès !");
+setTimeout(() => {
+    setSuccessMessage("");
     navigate("/"); // retour à la liste
+  }, 3000);
   };
 const handleImageChange = (e) => {
     setImageFile(e.target.files[0]);
@@ -19,12 +26,18 @@ const handleImageChange = (e) => {
   return (
     <div className="card p-4 shadow-sm">
       <h4>Publier un nouvel article</h4>
+       {successMessage && (
+        <div className="alert alert-success mt-3">
+          {successMessage}
+        </div>
+      )}
       <form onSubmit={handleSubmit}>
-        <input className="form-control mb-3" placeholder="Titre" value={title} onChange={e => setTitle(e.target.value)} />
-        <textarea className="form-control mb-3" rows="4" placeholder="Contenu" value={content} onChange={e => setContent(e.target.value)}></textarea>
+        <input className="form-control mb-3" placeholder="Titre" required value={title} onChange={e => setTitle(e.target.value)} />
+        <textarea className="form-control mb-3" rows="4" placeholder="Contenu" required value={content} onChange={e => setContent(e.target.value)}></textarea>
         <input
           type="file"
           accept="image/*"
+          required
           className="form-control mb-3"
           onChange={handleImageChange}
         />

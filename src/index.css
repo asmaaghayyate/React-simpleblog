@@ -75,6 +75,21 @@ footer {
       padding: 40px 0;
     }
 
+ .btn-envoye {
+       background-color: #a8c79b; /* vert clair */
+  border: 1px solid #a8c79b;
+  color: #2f3e2c; /* texte foncé */
+  padding: 0.5rem 1.2rem;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  text-decoration: none;
+    }
+
+    .btn-envoye:hover {
+    color: #f6f8f5;
+    }
+
 
 .btn-voir-plus {
   background-color: transparent;

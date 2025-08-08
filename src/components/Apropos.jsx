@@ -25,7 +25,7 @@ return(
     <div className="col-md-6 justify-content-end">
         <img
                   src="./public/images/apropos.avif"
-                  style={{ height: "300px",width:"500px", objectFit: "cover" }}
+                  style={{ height: "250px",width:"500px", objectFit: "cover" }}
                 />
         </div>
 </div>

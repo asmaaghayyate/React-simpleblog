@@ -7,7 +7,7 @@ import Home from "./components/Home";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Apropos from "./components/Apropos.jsx"; // ou le chemin correct
-
+import Contact from "./components/Contact.jsx"; 
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
@@ -26,7 +26,9 @@ function App() {
         const apiArticles = data.articles.map((art, index) => ({
           id: index + 1,
           title: art.title,
-          imagefile: art.urlToImage || "https://picsum.photos/seed/400/200",
+          image: art.urlToImage && !art.urlToImage.includes("axios.com") 
+    ? art.urlToImage 
+    : "https://picsum.photos/seed/400/200",
           content: art.description || art.content || "",
           date: art.publishedAt
         ? new Date(art.publishedAt).toLocaleDateString('fr-FR', {
@@ -43,14 +45,22 @@ function App() {
       .catch(() => setLoading(false));
   }, []);
 
-  const handleAddArticle = (title, content,imageFile) => {
-   let imageUrl = "";
-    imageUrl = URL.createObjectURL(imageFile);
+  const handleAddArticle = (title, content, imageFile) => {
+  const reader = new FileReader();
+
+  reader.onloadend = () => {
+    const base64Image = reader.result;
+
     const newArticle = {
       id: Date.now(),
       title,
       content,
-      image:imageUrl
+      image: base64Image,
+      date: new Date().toLocaleDateString('fr-FR', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      }),
     };
 
     const updatedArticles = [...articles, newArticle];
@@ -59,7 +69,19 @@ function App() {
     const savedArticles = localStorage.getItem("articles");
     const localArticles = savedArticles ? JSON.parse(savedArticles) : [];
     localStorage.setItem("articles", JSON.stringify([...localArticles, newArticle]));
+
+   {successMessage && (
+  <div className="alert alert-success mt-3">
+    {successMessage}
+  </div>
+)}
+
   };
+
+  reader.readAsDataURL(imageFile); // Convertit l’image en Base64
+  
+};
+
 
   if (loading) {
     return (
@@ -88,11 +110,20 @@ function App() {
           <Apropos />
         </main>
       } />
+
+       <Route path="/contact" element={
+        <main className="container my-4">
+          <Contact />
+        </main>
+      } />
       <Route path="/new" element={
         <main className="container my-4">
           <NewArticleForm onAddArticle={handleAddArticle} />
         </main>
       } />
+
+     
+
         </Routes>
       <Footer></Footer>
     </Router>

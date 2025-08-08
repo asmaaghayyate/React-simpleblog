@@ -11,8 +11,11 @@ export default function Home({ articles }) {
     <>
     
 <main  className="container-fluid p-0  mt-5">
-  <img src="images/bloghome2.jpeg" alt="Espace de travail" className="hero-image" />
- 
+ <img 
+  src={`${import.meta.env.BASE_URL}images/bloghome2.jpeg`} 
+  alt="Espace de travail" 
+  className="hero-image" 
+/>
 </main>
 
 <div className="mt-4">

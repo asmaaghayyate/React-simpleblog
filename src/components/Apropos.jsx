@@ -24,9 +24,11 @@ return(
         </div>
     <div className="col-md-6 justify-content-end">
         <img
-                  src="./public/images/apropos.avif"
+                  src={`${import.meta.env.BASE_URL}images/apropos.avif`}  
                   style={{ height: "250px",width:"500px", objectFit: "cover" }}
                 />
+
+              
         </div>
 </div>
 </div>
